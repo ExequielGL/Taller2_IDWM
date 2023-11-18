@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\auth;
 
-use App\Models\User;
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -12,29 +11,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
 
-    public function register(RegisterRequest $request)
-    {
-
-        // Creamos el usuario
-        $user = User::create([
-            'name' => $request->name,
-            'last_name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-
-        // Generamos el token
-        $token = JWTAuth::fromUser($user);
-
-        return response()->json([
-            'user' => $user, 
-            'token' => $token,
-        ]);
-    }
-
     public function login(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         try {
             
@@ -50,8 +29,14 @@ class AuthController extends Controller
                 'error' => 'token no creado'
             ], 500);
         }
+        // Obtener el usuario autenticado
+        $admin = auth()->user();
 
-        return response()->json(compact('token'));
+        // Retornar el token junto con el nombre del usuario
+        return response()->json([
+            'token' => $token,
+            'username' => $admin->username,
+        ]);
     }
 
     /**

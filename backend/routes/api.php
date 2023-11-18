@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\auth\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,10 @@ use App\Http\Controllers\auth\AuthController;
 //     return $request->user();
 // });
 
-Route::post('register', [AuthController::class, 'register']);
+
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('jwt.verify')->group(function () {
-    Route::get('users', [UserController::class, 'index']);
+    Route::post('register-clients', [ClientController::class, 'store']);
+    Route::get('clients', [ClientController::class, 'index']);
 });
