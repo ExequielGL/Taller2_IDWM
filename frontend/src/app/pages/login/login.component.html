@@ -1,0 +1,24 @@
+<p>login works!</p>
+<section>
+    <form [formGroup]="loginForm" (ngSubmit)="handleLoginFormSubmit()">
+        <label>
+            Nombre de usuario 
+            <input id="username" type="text" class="form-control" formControlName="username"/>
+            <div *ngIf="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
+                <div *ngIf="loginForm.controls.username.errors?.['required']">
+                Username is required.
+                </div>
+            </div>
+        </label>
+        <label>
+            Contraseña
+            <input id="password" type="password" formControlName="password" />
+            <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+                <div *ngIf="loginForm.controls.password.errors?.['required']">
+                Password is required.
+                </div>
+            </div>
+        </label>
+        <button [disabled]="!loginForm.valid" type="submit"> Submit </button>
+    </form>
+</section>

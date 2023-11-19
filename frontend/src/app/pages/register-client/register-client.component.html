@@ -1,0 +1,39 @@
+<div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4> Client create
+                    <a routerLink="" class="btn btn-danger float-end"> Back</a>
+                </h4>
+            </div>
+            <div class="card-body">
+                
+                <form (ngSubmit)="saveClient()">
+                    <div class="mb-3">
+                        <label>RUT</label>
+                        <input type="text" [(ngModel)]="rut_or_dni" name="rut_or_dni" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Name</label>
+                        <input type="text" [(ngModel)]="name" name="name" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Apellido</label>
+                        <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Correo electrónico</label>
+                        <input type="email" [(ngModel)]="email" name="email" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Puntos</label>
+                        <input type="number" [(ngModel)]="points" name="points" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <button submit="submit" class="btn btn-primary"> Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
