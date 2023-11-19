@@ -23,6 +23,9 @@ use App\Http\Controllers\auth\AuthController;
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('jwt.verify')->group(function () {
-    Route::post('register-clients', [ClientController::class, 'store']);
     Route::get('clients', [ClientController::class, 'index']);
+    Route::post('clients/register', [ClientController::class, 'store']);
+    Route::get('clients/{id}/edit', [ClientController::class, 'show']);
+    Route::put('clients/{id}/edit', [ClientController::class, 'update']);
+    Route::delete('clients/{id}', [ClientController::class, 'destroy']);
 });

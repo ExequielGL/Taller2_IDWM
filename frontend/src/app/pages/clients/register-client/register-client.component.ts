@@ -10,18 +10,25 @@ export class RegisterClientComponent {
 
   constructor( private clientService: ClientService) {}
 
+  //Inicialización de los valores del formulario
+  id!: number;
   rut_or_dni!: string
   name: string = ''
   last_name: string = ''
   email: string = ''
   points: number = 0
 
+  //Lista de errores
+  errors: any = [];
+
+  //Funcion para enviar la información al backend y recibir una respuesta
   saveClient(){
 
     var inputData = {
+      id: this.id,
       rut_or_dni: this.rut_or_dni,
       name: this.name,
-      las_name: this.last_name,
+      last_name: this.last_name,
       email: this.email,
       points: this.points
     }
@@ -29,9 +36,16 @@ export class RegisterClientComponent {
     this.clientService.saveClient(inputData).subscribe({ 
       next: (response) => {
         console.log(response);
+        alert();
+        this.rut_or_dni = '';
+        this.name ='';
+        this.last_name = '';
+        this.email = '';
+        this.points = 0;
       },
       error: (err) => {
-        console.log('Error inesperado: ', err);
+        this.errors = err.error.errors;
+        console.log('Error: ', this.errors);
       }
     });
   }

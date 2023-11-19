@@ -1,0 +1,47 @@
+<div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4> Editar cliente 
+                    <a routerLink="/clients" class="btn btn-danger float-end"> Volver</a>
+                </h4>
+            </div>
+            <div class="card-body">
+                
+                <form (ngSubmit)="updateClient()">
+                    <div *ngIf="client">
+                        <div class="mb-3">
+                            <label>RUT</label>
+                            <input type="text" [(ngModel)]="client.rut_or_dni" name="rut_or_dni" class="form-control" [readOnly]="true" [disabled]="true"/>
+                            <span *ngIf="errors.rut_or_dni" class="text-danger">{{ errors.rut_or_dni }}</span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <input type="text" [(ngModel)]="client.name" name="name" class="form-control"/>
+                            <span *ngIf="errors.name" class="text-danger">{{ errors.name }}</span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Apellido</label>
+                            <input type="text" [(ngModel)]="client.last_name" name="last_name" class="form-control"/>
+                            <span *ngIf="errors.last_name" class="text-danger">{{ errors.last_name }}</span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Correo electrónico</label>
+                            <input type="email" [(ngModel)]="client.email" name="email" class="form-control"/>
+                            <span *ngIf="errors.email" class="text-danger">{{ errors.email }}</span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Puntos</label>
+                            <input type="number" [(ngModel)]="client.points" name="points" class="form-control"/>
+                            <span *ngIf="errors.points" class="text-danger">{{ errors.points }}</span>
+                        </div>   
+                    </div>
+                    <div class="mb-3">
+                        <button submit="submit" class="btn btn-primary"> Editar </button>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

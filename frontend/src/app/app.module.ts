@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterClientComponent } from './pages/register-client/register-client.component';
-import { ClientsComponent } from './pages/clients/clients.component';
+import { RegisterClientComponent } from './pages/clients/register-client/register-client.component';
+import { ClientsComponent } from './pages/clients/show-client/show-client.component';
 import { NavbarComponent } from './pages/partials/navbar/navbar.component';
+import { EditClientComponent } from './pages/clients/edit-client/edit-client.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +17,15 @@ import { NavbarComponent } from './pages/partials/navbar/navbar.component';
     LoginComponent,
     ClientsComponent,
     NavbarComponent,
-    RegisterClientComponent
+    RegisterClientComponent,
+    EditClientComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

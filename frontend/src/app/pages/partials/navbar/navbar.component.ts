@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject} from '@angular/core';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  constructor(public clientService: ClientService) {}
+
+  onClickLogout() {
+    localStorage.removeItem('token');
+  }
 }

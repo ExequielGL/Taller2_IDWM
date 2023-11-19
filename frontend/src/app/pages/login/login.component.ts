@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { LoginResponse } from 'src/app/interfaces/login';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +11,8 @@ import { LoginResponse } from 'src/app/interfaces/login';
 export class LoginComponent {
   constructor(private authService: AuthService, private router:Router){}
 
-  loginForm = new FormGroup({
-    username: new FormControl<string>('', [Validators.required]),
+  loginForm= new FormGroup({
+    username: new FormControl<string>('', Validators.required),
     password: new FormControl<string>('', Validators.required)
   })
 
@@ -27,7 +26,7 @@ export class LoginComponent {
     this.authService.login(dataToSend).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        console.log("TOKEN: ", response.token);
+        this.router.navigate(['/clients']);
       },
       error: (error) => {
         console.error('Error de inicio de sesión', error);
