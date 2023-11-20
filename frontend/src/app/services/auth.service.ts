@@ -11,6 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  //Función que envia las credenciales a la api para iniciar sesión
   login(credentials: LoginForm) {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials);
   }

@@ -4,7 +4,7 @@
             <h4> Editar un cliente </h4>
         </div>
         <div class="card-body form-body">
-            <form (ngSubmit)="updateClient()" class="overflow-auto">
+            <form (ngSubmit)="handleEditFormSubmit()" class="overflow-auto">
                 <div *ngIf="client">
                     <div class="mb-3">
                         <label class="mb-1">RUT</label>

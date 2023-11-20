@@ -5,7 +5,7 @@
             <h4> Añadir un cliente </h4>
         </div>
         <div class="card-body form-body">
-            <form [formGroup]="registerForm" (ngSubmit)="saveClient()" class="overflow-auto">
+            <form [formGroup]="registerForm" (ngSubmit)="handleRegisterFormSubmit()" class="overflow-auto">
                 <div class="mb-3">
                     <label class="mb-1">RUT</label>
                     <input id="rut_or_dni" type="text" formControlName="rut_or_dni" name="rut_or_dni" class="form-control"/>

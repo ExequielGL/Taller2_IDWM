@@ -13,6 +13,7 @@ export class ClientService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+  //Función para insertar un cliente en la base de datos
   saveClient(inputData: CreateClientType){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.httpClient.post<LoginResponse>(`http://localhost:8000/api/clients/register`, inputData, {headers}).pipe(
@@ -27,6 +28,7 @@ export class ClientService {
     );
   }
 
+  //Función para obtener todos los clientes de la base de datos
   getClients(){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.httpClient.get<ClientShowResponse>(`http://localhost:8000/api/clients`, {headers}).pipe(
@@ -41,6 +43,7 @@ export class ClientService {
     );
   }
 
+  //Función para obtener solo un cliente de la base de datos
   getClient(clientId: number){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.httpClient.get<ClientEditResponse>(`http://localhost:8000/api/clients/${clientId}/edit`, {headers}).pipe(
@@ -54,7 +57,8 @@ export class ClientService {
       })
     );
   }
-
+  
+  //Función para actualizar un cliente de la base de datos
   updateClient(inputData: object, clientId: number){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.httpClient.put(`http://localhost:8000/api/clients/${clientId}/edit`, inputData, {headers}).pipe(
@@ -69,6 +73,7 @@ export class ClientService {
     );
   }
 
+  //Función para eliminar un cliente de la base de datos
   destroyClient(clientId:number){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.httpClient.delete(`http://localhost:8000/api/clients/${clientId}`, {headers}).pipe(
@@ -83,6 +88,7 @@ export class ClientService {
     );
   }
 
+  //Función para verificar si se esta logeado o no
   isLogged(): boolean {
     return localStorage.getItem('token') ? true : false;
   }

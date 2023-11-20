@@ -28,8 +28,9 @@ export class EditClientComponent {
 
   }
 
-  updateClient(){
-    
+  handleEditFormSubmit(){
+
+    //Variable que se va poblando solamente con los datos que se modifiquen
     var inputData: any = {};
 
     if (this.client.name !== this.originalClient.name) {
@@ -48,6 +49,7 @@ export class EditClientComponent {
       inputData.points = this.client.points;
     }
 
+    //Se verifica que se hayan agregado datos al inputData
     if (Object.keys(inputData).length === 0) {
       // No hay cambios, no necesitas realizar la actualización
       alert("No se realizaron cambios.");
@@ -55,6 +57,7 @@ export class EditClientComponent {
       return;
     }
 
+    //Si se agregaron datos al inputData, los envia a la api y redirecciona a la ventana de clientes.
     this.clientService.updateClient(inputData, this.clientId).subscribe({
       next: () => {
         alert('Se ha actualizado la información del cliente correctamente.');

@@ -24,8 +24,9 @@ export class RegisterClientComponent {
   //Lista de errores
   errors: any = [];
 
-  //Funcion para enviar la información al backend y recibir una respuesta
-  saveClient(){
+  //Función para manejar el envio del formulario de inicio de sesión
+  handleRegisterFormSubmit(){
+    //Se valida que el formulario sea válido
     if(this.registerForm.valid){
       const formData = this.registerForm.value;
       const dataToSend = {
@@ -48,6 +49,7 @@ export class RegisterClientComponent {
         }
       });
     }else{
+      //Si no es válido marca todas las casillas como "tocadas" para que salten las validaciones
       this.registerForm.markAllAsTouched();
     }
   }

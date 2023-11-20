@@ -10,20 +10,23 @@ import { ClientService } from 'src/app/services/client.service';
 export class ClientsComponent implements OnInit{
 
   clients!: Client[];
-  searchTerm: string = '';
+  searchTerm: string = ''; //Para la búsqueda
 
   constructor(private clientsService: ClientService) {}
 
+  //Al iniciar la vista se cargan todos los clientes
   ngOnInit() {
     this.getClients()
   }
 
+  //Función para llamar al servicio y obtener los clientes de la base de datos
   getClients(){
     this.clientsService.getClients().subscribe(data => {
       this.clients = data.clients;
     });
   }
 
+  //Función para llamar al servicio y eliminar un cliente de la base de datos
   deleteClient(event:any , clientId:number ){
 
     if(confirm('Esta acción es irreversible, ¿Estás seguro de eliminar al cliente?.'))
@@ -36,6 +39,7 @@ export class ClientsComponent implements OnInit{
     }
   }
 
+  //Función que busca en tiempo real un cliente dentro de la tabla de clientes.
   search() {
     if (this.searchTerm.trim() !== '') {
       // Realiza la búsqueda utilizando el principio de la función contains

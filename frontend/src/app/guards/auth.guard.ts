@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 const jwtHelper = new JwtHelperService();
 
+//Función que verifica que el usuario haya iniciado sesión o el token que contiene es válido.
 export const authGuard = () => {
 
   const router = inject(Router);

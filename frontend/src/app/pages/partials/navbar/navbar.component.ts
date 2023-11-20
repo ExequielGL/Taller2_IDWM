@@ -10,6 +10,7 @@ export class NavbarComponent {
 
   constructor(public clientService: ClientService) {}
 
+  //Función para eliminar el token del almacenamiento local.
   onClickLogout() {
     localStorage.removeItem('token');
   }
