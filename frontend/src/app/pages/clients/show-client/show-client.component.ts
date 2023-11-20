@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Client, ClientShowResponse } from 'src/app/interfaces/clients';
+import { Client} from 'src/app/interfaces/clients';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({

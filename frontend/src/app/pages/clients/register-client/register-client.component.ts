@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-client',
@@ -8,45 +10,52 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class RegisterClientComponent {
 
-  constructor( private clientService: ClientService) {}
+  constructor( private clientService: ClientService, private router:Router) {}
 
   //Inicialización de los valores del formulario
-  id!: number;
-  rut_or_dni!: string
-  name: string = ''
-  last_name: string = ''
-  email: string = ''
-  points: number = 0
+  registerForm= new FormGroup({
+    rut_or_dni: new FormControl<string>('', Validators.required),
+    name: new FormControl<string>('', Validators.required),
+    last_name: new FormControl<string>('', Validators.required),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    points: new FormControl<number>(0, [Validators.required, Validators.min(0)])
+  })
 
   //Lista de errores
   errors: any = [];
 
+  changeTextBtn(event:any){
+    event.target.innerText = "Enviando...";
+    if(!this.registerForm.valid){
+      event.target.innerText = "Enviar";
+    }
+  }
+
   //Funcion para enviar la información al backend y recibir una respuesta
   saveClient(){
-
-    var inputData = {
-      id: this.id,
-      rut_or_dni: this.rut_or_dni,
-      name: this.name,
-      last_name: this.last_name,
-      email: this.email,
-      points: this.points
-    }
+    if(this.registerForm.valid){
+      const formData = this.registerForm.value;
+      const dataToSend = {
+        rut_or_dni: formData.rut_or_dni || '',
+        name: formData.name || '',
+        last_name: formData.last_name || '',
+        email: formData.email || '',
+        points: formData.points || 0,
+      };
       
-    this.clientService.saveClient(inputData).subscribe({ 
-      next: (response) => {
-        console.log(response);
-        alert();
-        this.rut_or_dni = '';
-        this.name ='';
-        this.last_name = '';
-        this.email = '';
-        this.points = 0;
-      },
-      error: (err) => {
-        this.errors = err.error.errors;
-        console.log('Error: ', this.errors);
-      }
-    });
+      this.clientService.saveClient(dataToSend).subscribe({
+        next: () => {
+          alert('Se ha creado el cliente exitosamente');
+          this.router.navigate(['/clients']);
+          
+        },
+        error: (err) => {
+          this.errors = err.error.errors;
+          console.error('Error durante el registro', this.errors);
+        }
+      });
+    }else{
+      this.registerForm.markAllAsTouched();
+    }
   }
 }

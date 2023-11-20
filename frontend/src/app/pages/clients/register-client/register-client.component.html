@@ -1,44 +1,61 @@
-<div>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">
-                <h4> Añadir un cliente
-                    <a routerLink="/clients" class="btn btn-danger float-end"> Volver</a>
-                </h4>
-            </div>
-            <div class="card-body">
-                
-                <form (ngSubmit)="saveClient()">
-                    <div class="mb-3">
-                        <label>RUT</label>
-                        <input type="text" [(ngModel)]="rut_or_dni" name="rut_or_dni" class="form-control"/>
-                        <span *ngIf="errors.rut_or_dni" class="text-danger">{{ errors.rut_or_dni }}</span>
-                    </div>
-                    <div class="mb-3">
-                        <label>Name</label>
-                        <input type="text" [(ngModel)]="name" name="name" class="form-control"/>
-                        <span *ngIf="errors.name" class="text-danger">{{ errors.name }}</span>
-                    </div>
-                    <div class="mb-3">
-                        <label>Apellido</label>
-                        <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control"/>
-                        <span *ngIf="errors.last_name" class="text-danger">{{ errors.last_name }}</span>
-                    </div>
-                    <div class="mb-3">
-                        <label>Correo electrónico</label>
-                        <input type="email" [(ngModel)]="email" name="email" class="form-control"/>
-                        <span *ngIf="errors.email" class="text-danger">{{ errors.email }}</span>
-                    </div>
-                    <div class="mb-3">
-                        <label>Puntos</label>
-                        <input type="number" [(ngModel)]="points" name="points" class="form-control"/>
-                        <span *ngIf="errors.points" class="text-danger">{{ errors.points }}</span>
-                    </div>
-                    <div class="mb-3">
-                        <button submit="submit" class="btn btn-primary"> Create</button>
-                    </div>
-                </form>
-            </div>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-center form-header pt-3 ">
+            <h4> Añadir un cliente </h4>
+        </div>
+        <div class="card-body form-body">
+            <form [formGroup]="registerForm" (ngSubmit)="saveClient()" class="overflow-auto">
+                <div class="mb-3">
+                    <label class="mb-1">RUT</label>
+                    <input id="rut_or_dni" type="text" formControlName="rut_or_dni" name="rut_or_dni" class="form-control"/>
+                    <app-validators
+                        [control]="registerForm.controls.rut_or_dni"
+                        errorMessage="El campo rut es requerido"
+                        [serverError]="errors.rut_or_dni">
+                    </app-validators>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-1">Nombre</label>
+                    <input id="name" type="text" formControlName="name" name="name" class="form-control"/>
+                    <app-validators
+                        [control]="registerForm.controls.name"
+                        errorMessage="El campo nombre es requerido"
+                        [serverError]="errors.name">
+                    </app-validators>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-1">Apellido</label>
+                    <input id="last_name" type="text" formControlName="last_name" name="last_name" class="form-control"/>
+                    <app-validators
+                        [control]="registerForm.controls.last_name"
+                        errorMessage="El campo apellido es requerido"
+                        [serverError]="errors.last_name">
+                    </app-validators>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-1">Correo electrónico</label>
+                    <input id="email" type="email" formControlName="email" name="email" class="form-control"/>
+                    <app-validators
+                        [control]="registerForm.controls.email"
+                        errorMessage="El campo correo electrónico es requerido"
+                        [serverError]="errors.email">
+                    </app-validators>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-1">Puntos</label>
+                    <input id="points" type="number" formControlName="points" name="points" class="form-control"/>
+                    <app-validators
+                        [control]="registerForm.controls.points"
+                        errorMessage="El campo puntos es requerido"
+                        [serverError]="errors.points">
+                    </app-validators>
+                </div>
+                <div class="mb-3 pt-3 d-flex justify-content-center">
+                    <button (click)="changeTextBtn($event)" submit="submit" class="btn btn-send me-3">Enviar</button>
+                    <a routerLink="/clients" class="btn btn-back"> Volver</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

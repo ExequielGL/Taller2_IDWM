@@ -1,0 +1,25 @@
+.nav-link {
+    color: #fff;
+    font-size: large;
+}
+
+.active-link {
+    color: #026014;
+    
+}
+
+.logo{
+    width: 60px;
+    height: 60px;
+}
+
+.navbar{
+    background-color: rgba(148, 190, 148, 0.801);
+}
+
+.name-system{
+    color: #026014;
+    font-size: 24px;
+    font-weight: bold;
+}
+

@@ -1,0 +1,23 @@
+.form-header{
+    background-color: #366836;
+    color: white;
+    padding-top: 10px;
+}
+
+.form-body{
+    background-color: #e0e0e0;
+}
+
+.btn-back{
+    background-color: rgb(100, 99, 99);
+    color:white;
+    padding: 10px 30px;
+    font-weight: 600;
+}
+
+.btn-send{
+    background-color: rgba(0, 0, 0, 0.856);
+    color: white;
+    padding: 10px 30px;
+    font-weight: 600;
+}

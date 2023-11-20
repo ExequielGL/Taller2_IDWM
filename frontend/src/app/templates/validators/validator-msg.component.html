@@ -1,0 +1,16 @@
+<!--Validaciones lado del cliente-->
+<div *ngIf="control.invalid && (control.dirty || control.touched)">
+    <div *ngIf="control.errors?.['required']">
+      <span class="text-danger fw-bold">{{ errorMessage }}</span>
+    </div>
+    <div *ngIf="control.errors?.['email']">
+      <span class="text-danger fw-bold"> El campo email debe tener formato correcto, ejemplo: correo@dominio.com</span>
+    </div>
+    <div *ngIf="control.errors?.['min']">
+      <span class="text-danger fw-bold"> El campo debe ser mayor o igual a 0</span>
+    </div>
+</div>
+<!--------------------------------->
+<!--Validaciones lado del servidor-->
+<span *ngIf="serverError" class="text-danger fw-bold">{{ serverError }}</span>
+<!--------------------------------->
