@@ -1,9 +1,14 @@
 <div class="container mt-5">
     <div class="card table-header">
-        <div class="card-header d-flex justify-content-center">
+        <div class="card-header d-flex justify-content-between ">
             <h4 class="text-white m-2 "> Tabla de clientes </h4>
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar cliente" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm" (input)="search()">
+            </div>
         </div>
         <div class="table-responsive">
+        <!-- Verifica si hay clientes después de la búsqueda -->
+        <ng-container *ngIf="clients && clients.length > 0; else noClients">
             <table class="table table-default table-striped table-bordered">
                 <thead>
                 <tr class="text-center">
@@ -33,6 +38,12 @@
                 </tr>
                 </tbody>
             </table>
+        </ng-container>
+        <!-- Mensaje si no hay clientes después de la búsqueda -->
+        <ng-template #noClients>
+          <p class="text-center mt-4 fw-bold text-white" *ngIf="searchTerm">No se encontraron resultados para la búsqueda.</p>
+          <p class="text-center mt-2 fw-bold text-white" *ngIf="!searchTerm">No hay clientes.</p>
+        </ng-template>
         </div>
     </div>
 </div>

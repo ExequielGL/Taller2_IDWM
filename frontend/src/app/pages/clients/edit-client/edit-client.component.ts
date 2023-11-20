@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/services/client.service';
-import { Client, ClientEditResponse } from 'src/app/interfaces/clients';
+import { Client } from 'src/app/interfaces/clients';
 
 @Component({
   selector: 'app-edit-client',
@@ -16,7 +16,7 @@ export class EditClientComponent {
   //Lista de errores
   errors: any = [];
 
-  constructor(private route: ActivatedRoute, private clientService: ClientService) {}
+  constructor(private route: ActivatedRoute, private clientService: ClientService, private router: Router) {}
 
   ngOnInit(){
     this.clientId = this.route.snapshot.paramMap.get('id');
@@ -51,13 +51,14 @@ export class EditClientComponent {
     if (Object.keys(inputData).length === 0) {
       // No hay cambios, no necesitas realizar la actualización
       alert("No se realizaron cambios.");
+      this.router.navigate(['/clients']);
       return;
     }
 
-    console.log(inputData);
     this.clientService.updateClient(inputData, this.clientId).subscribe({
       next: () => {
         alert('Se ha actualizado la información del cliente correctamente.');
+        this.router.navigate(['/clients']);
       },
       error: (err) => {
         this.errors = err.error.errors;

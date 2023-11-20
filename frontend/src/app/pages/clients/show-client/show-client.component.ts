@@ -10,6 +10,7 @@ import { ClientService } from 'src/app/services/client.service';
 export class ClientsComponent implements OnInit{
 
   clients!: Client[];
+  searchTerm: string = '';
 
   constructor(private clientsService: ClientService) {}
 
@@ -33,6 +34,18 @@ export class ClientsComponent implements OnInit{
         alert('Se ha eliminado el cliente con éxito');
       });
     }
-
   }
+
+  search() {
+    if (this.searchTerm.trim() !== '') {
+      // Realiza la búsqueda utilizando el principio de la función contains
+      this.clients = this.clients.filter(client =>
+        client.rut_or_dni.includes(this.searchTerm) || client.email.includes(this.searchTerm)
+      );
+    } else {
+      // Si el término de búsqueda está vacío, vuelve a cargar todos los clientes
+      this.getClients();
+    }
+  }
+
 }

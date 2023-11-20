@@ -3,9 +3,34 @@
     color:white; 
 }
 
+.btn-edit:active,
+.btn-edit:hover{
+    background-color: #2e4e2e;
+    color:white; 
+}
+
 .btn-delete{
     background-color: #8b0000;
     color:white; 
+}
+
+.btn-delete:hover,
+.btn-delete:active{
+    background-color: #5c0707;
+    color:white; 
+}
+
+.btn-search{
+    background-color: rgba(77, 71, 71, 0.856);
+    color:white;
+    font-weight: 600;
+}
+
+.btn-search:hover,
+.btn-search:active{
+    background-color: rgba(0, 0, 0, 0.856);
+    color:white;
+    font-weight: 600;
 }
 
 .table-header{
