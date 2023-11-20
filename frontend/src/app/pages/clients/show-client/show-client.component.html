@@ -31,7 +31,7 @@
                     <td>{{ client.points }}</td>
                     <td>
                         <div class="d-flex justify-content-center">
-                            <a routerLink="/clients/{{client.id}}/edit" class="btn btn-edit me-2 fw-bold"> Editar </a>
+                            <a routerLink="/clients/{{client.id}}/edit" class="btn btn-edit me-2 fw-bold no" > Editar </a>
                             <button type="button" (click)="deleteClient($event,client.id)" class="btn btn-delete fw-bold"> Eliminar </button>
                         </div>
                     </td>
@@ -42,7 +42,7 @@
         <!-- Mensaje si no hay clientes después de la búsqueda -->
         <ng-template #noClients>
           <p class="text-center mt-4 fw-bold text-white" *ngIf="searchTerm">No se encontraron resultados para la búsqueda.</p>
-          <p class="text-center mt-2 fw-bold text-white" *ngIf="!searchTerm">No hay clientes.</p>
+          <p class="text-center mt-4 fw-bold text-white" *ngIf="!searchTerm">No hay clientes.</p>
         </ng-template>
         </div>
     </div>
