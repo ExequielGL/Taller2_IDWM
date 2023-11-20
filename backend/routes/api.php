@@ -15,13 +15,11 @@ use App\Http\Controllers\auth\AuthController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-
+//Rutas desprotegidas
 Route::post('login', [AuthController::class, 'login']);
 
+//Rutas protegidas por JWT
 Route::middleware('jwt.verify')->group(function () {
     Route::get('clients', [ClientController::class, 'index']);
     Route::post('clients/register', [ClientController::class, 'store']);
