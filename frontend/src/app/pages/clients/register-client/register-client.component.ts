@@ -24,13 +24,6 @@ export class RegisterClientComponent {
   //Lista de errores
   errors: any = [];
 
-  changeTextBtn(event:any){
-    event.target.innerText = "Enviando...";
-    if(!this.registerForm.valid){
-      event.target.innerText = "Enviar";
-    }
-  }
-
   //Funcion para enviar la información al backend y recibir una respuesta
   saveClient(){
     if(this.registerForm.valid){
