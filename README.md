@@ -56,7 +56,7 @@ Para configurar angular, se debe abrir una terminal con la ruta dentro de la car
 npm install
 ```
 
-Se instalarán las dependencias necesarias de node.js para ejecutar el proyecto. En caso de presentar problemas consultar la sección [Incompatibilidad de version de Node.JS](#incompatibilidad-de-version-de-node.js)
+Se instalarán las dependencias necesarias de node.js para ejecutar el proyecto. En caso de presentar problemas consultar la sección [Incompatibilidad de version de Node.JS](#incompatibilidad-de-version-de-nodejs)
 
 2. **Si se utiliza la consola de Windows (Opcional):**
 
@@ -86,7 +86,7 @@ Cualquiera de estos comandos iniciarán el servidor de Angular.
 
 ## Incompatibilidad de version de Node.JS
 
-Si se muestran problemas de compatibilidad entre la versión actual de nodejs y angular se debe instalar la versión 18.16.0 a través de Node Version Manager, para instalar haga clic [aquí](https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe), una vez instalado siga los siguientes pasos:
+Si se muestran problemas de compatibilidad entre la versión actual de nodejs y angular se debe instalar la versión 18.16.0 a través de Node Version Manager, para instalar haga clic [aquí](https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe) y una vez instalado siga los siguientes pasos:
 
 1. **Abrir terminal cmd:**
 
