@@ -2,6 +2,8 @@
 
 Antes de comenzar, asegúrate de tener [Composer](https://getcomposer.org/), [Node.js](https://nodejs.org/en) y [Xampp](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.4/xampp-windows-x64-8.2.4-0-VS16-installer.exe/download) instalados en tu sistema.
 
+Antes de comenzar se debe iniciar el servidor de Apache y el gestor de base de datos MySQL contenidos en Xampp.
+
 ### Laravel
 
 Para configurar Laravel, se debe abrir una terminal con la ruta dentro de la carpeta 'api_practica2', luego sigue estos pasos:
