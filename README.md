@@ -1,12 +1,12 @@
 ## Guia de instalación
 
-Antes de comenzar, asegúrate de tener [Composer](https://getcomposer.org/), [Node.js](https://nodejs.org/en) y [Xampp](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.4/xampp-windows-x64-8.2.4-0-VS16-installer.exe/download) instalados en tu sistema.
+Antes de comenzar, asegúrate de tener [Visual Studio Code](https://code.visualstudio.com/download), [Composer](https://getcomposer.org/), [Node.js](https://nodejs.org/en) y [Xampp](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.4/xampp-windows-x64-8.2.4-0-VS16-installer.exe/download) instalados en tu sistema.
 
-Antes de comenzar se debe iniciar el servidor de Apache y el gestor de base de datos MySQL contenidos en Xampp.
+Antes de comenzar se debe iniciar el servidor de Apache y el gestor de base de datos MySQL contenidos en Xampp. Abrir la carpeta clonada utilizando Visual studio code.
 
 ### Laravel
 
-Para configurar Laravel, se debe abrir una terminal con la ruta dentro de la carpeta 'api_practica2', luego sigue estos pasos:
+Para configurar Laravel, se debe abrir una terminal con la ruta dentro de la carpeta 'backend', luego sigue estos pasos:
 
 1. **Instalar dependencias de PHP con Composer:**
 
@@ -50,7 +50,7 @@ Este comando iniciará el servidor de Laravel de manera local.
 
 ### Angular
 
-Para configurar angular, se debe abrir una terminal con la ruta dentro de la carpeta 'frontend_practica2', luego sigue estos pasos:
+Para configurar angular, se debe abrir una terminal con la ruta dentro de la carpeta 'frontend', luego sigue estos pasos:
 
 1. **Instalar dependencias de node.js:**
 
