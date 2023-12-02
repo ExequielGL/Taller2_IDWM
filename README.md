@@ -77,7 +77,7 @@ php artisan serve
 
 Este comando iniciará el servidor de Laravel de manera local.
 
-### Angular
+### Angular (Version 16.0.2)
 
 Para configurar angular, se debe abrir una terminal con la ruta dentro de la carpeta 'frontend', luego sigue estos pasos:
 
